@@ -1,0 +1,27 @@
+.scoreBoard {
+  display: flex;
+  gap: 8px;
+}
+
+.scoreTile {
+  background: #40916c;
+  border-radius: 6px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 64px;
+}
+
+.label {
+  font-size: 0.7rem;
+  color: #d8f3dc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}

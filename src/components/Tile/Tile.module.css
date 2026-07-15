@@ -1,0 +1,67 @@
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: #f4f1f6;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #4a4063;
+  transition: background-color 0.15s ease;
+}
+
+.tile2 {
+  background: #ffadad;
+  color: #7a2323;
+}
+.tile4 {
+  background: #ffd6a5;
+  color: #7a4b0e;
+}
+.tile8 {
+  background: #fdffb6;
+  color: #6b6b0e;
+}
+.tile16 {
+  background: #caffbf;
+  color: #1f5c1f;
+}
+.tile32 {
+  background: #9bf6ff;
+  color: #0c5760;
+}
+.tile64 {
+  background: #a0c4ff;
+  color: #1c3f7a;
+}
+.tile128 {
+  background: #bdb2ff;
+  color: #3d2e7c;
+  font-size: 1.5rem;
+}
+.tile256 {
+  background: #ffc6ff;
+  color: #7a1f6b;
+  font-size: 1.5rem;
+}
+.tile512 {
+  background: #ff6b6b;
+  color: #f9f6f2;
+  font-size: 1.5rem;
+}
+.tile1024 {
+  background: #f72585;
+  color: #f9f6f2;
+  font-size: 1.25rem;
+}
+.tile2048 {
+  background: #ffd60a;
+  color: #4a3800;
+  font-size: 1.25rem;
+}
+.tileMax {
+  background: #1b1b3a;
+  color: #ffd60a;
+  font-size: 1.25rem;
+}
