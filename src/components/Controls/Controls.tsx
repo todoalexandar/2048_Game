@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { suggestionReceived } from '../../features/ai/aiSlice'
 import { suggestMove } from '../../features/ai/suggestMove'
-import { newGameRequested, suggestionReceived } from '../../features/game/gameSlice'
+import { newGameRequested } from '../../features/game/gameSlice'
 import type { Direction } from '../../features/game/types'
 import styles from './Controls.module.css'
 
@@ -15,7 +16,7 @@ export function Controls() {
   const dispatch = useAppDispatch()
   const board = useAppSelector((state) => state.game.board)
   const status = useAppSelector((state) => state.game.status)
-  const suggestion = useAppSelector((state) => state.game.suggestion)
+  const suggestion = useAppSelector((state) => state.ai.suggestion)
 
   const handleNewGame = (): void => {
     dispatch(newGameRequested())

@@ -21,7 +21,7 @@ yarn test
 ```
 
 Vitest tests cover the exact before/after board examples from the requirements doc, plus edge
-cases for merge-once-per-move, win/lose detection, the Redux slice, and the AI advisor.
+cases for merge-once-per-move, win/lose detection, the Redux slices, and the AI advisor.
 
 ## Project structure
 
@@ -53,7 +53,9 @@ src/
                                    + corner bonus (aka monotonicity/smoothness in AI literature)
       expectimax.ts               Expectimax search (player-turn / chance-turn recursion)
       suggestMove.ts              Public API: suggestMove(board) -> best Direction
-      __tests__/                  Unit tests for heuristics and move suggestion
+      aiSlice.ts                  Redux Toolkit slice: holds the current suggestion, clears it
+                                   on game's moveRequested/newGameRequested via extraReducers
+      __tests__/                  Unit tests for heuristics, move suggestion, and the slice
 
   components/                  Presentational, feature-agnostic where possible
     Board/                      4x4 grid rendering
@@ -89,6 +91,10 @@ src/
 - **Redux Toolkit slice stays declarative.** `gameSlice.ts` only knows about the pure `logic/`
   functions (move, addRandomTile, getGameStatus) - it doesn't reimplement any game rules itself.
   The AI module is a one-way dependency on top of `game/logic`; the game feature never imports AI.
+- **AI suggestion state lives in its own slice.** `aiSlice.ts` owns `suggestion`, not `gameSlice.ts`,
+  keeping the one-way dependency intact even in Redux state: it clears itself by listening for
+  `game`'s `moveRequested`/`newGameRequested` actions via `extraReducers`, so `game` still has no
+  knowledge that an AI feature exists.
 - **Feature-folder structure.** Code is grouped by what it does (`game`, `ai`) rather than by
   technical layer, so all the code and tests for a concern live together.
 

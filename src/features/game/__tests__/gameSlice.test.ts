@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import reducer, { moveRequested, newGameRequested, suggestionReceived, type GameState } from '../gameSlice'
+import reducer, { moveRequested, newGameRequested, type GameState } from '../gameSlice'
 import type { Board } from '../types'
 
 function buildState(board: Board, overrides: Partial<GameState> = {}): GameState {
@@ -7,7 +7,6 @@ function buildState(board: Board, overrides: Partial<GameState> = {}): GameState
     board,
     score: 0,
     status: 'playing',
-    suggestion: null,
     ...overrides,
   }
 }
@@ -66,17 +65,5 @@ describe('gameSlice', () => {
     const next = reducer(before, newGameRequested())
     expect(next.score).toBe(0)
     expect(next.status).toBe('playing')
-  })
-
-  it('stores the AI suggestion', () => {
-    const before = buildState([
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-    ])
-
-    const next = reducer(before, suggestionReceived('up'))
-    expect(next.suggestion).toBe('up')
   })
 })

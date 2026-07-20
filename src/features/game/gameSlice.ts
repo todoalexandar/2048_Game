@@ -6,7 +6,6 @@ export interface GameState {
   board: Board
   score: number
   status: GameStatus
-  suggestion: Direction | null
 }
 
 function createInitialState(): GameState {
@@ -14,7 +13,6 @@ function createInitialState(): GameState {
     board: createInitialBoard(),
     score: 0,
     status: 'playing',
-    suggestion: null,
   }
 }
 
@@ -31,21 +29,16 @@ const gameSlice = createSlice({
       state.board = addRandomTile(result.board)
       state.score += result.scoreGained
       state.status = getGameStatus(state.board)
-      state.suggestion = null
     },
     newGameRequested: (state) => {
       const fresh = createInitialState()
       state.board = fresh.board
       state.score = 0
       state.status = 'playing'
-      state.suggestion = null
-    },
-    suggestionReceived: (state, action: PayloadAction<Direction | null>) => {
-      state.suggestion = action.payload
     },
   },
 })
 
-export const { moveRequested, newGameRequested, suggestionReceived } = gameSlice.actions
+export const { moveRequested, newGameRequested } = gameSlice.actions
 
 export default gameSlice.reducer
