@@ -1,17 +1,17 @@
-import { getEmptyCells } from '../game/logic'
+import { ALL_DIRECTIONS, getEmptyCells } from '../game/logic'
 import { move } from '../game/logic/moves'
 import type { Board } from '../game/types'
 import { scoreBoard } from './heuristics'
-import { DIRECTIONS, NEW_TILE_OUTCOMES } from './constants'
+import { NEW_TILE_OUTCOMES } from './constants'
 
 /** The player's turn: choose the direction that maximizes score gained plus the expected future outcome. */
 function playerTurn(board: Board, depth: number): number {
-  if (depth === 0) return scoreBoard(board)
+  if (depth <= 0) return scoreBoard(board)
 
   let best = -Infinity
   let hasValidMove = false
 
-  for (const direction of DIRECTIONS) {
+  for (const direction of ALL_DIRECTIONS) {
     const result = move(board, direction)
     if (!result.moved) continue
     hasValidMove = true
@@ -26,7 +26,7 @@ function playerTurn(board: Board, depth: number): number {
 /** The game's turn: average the outcome over where/what tile could spawn next. */
 function chanceTurn(board: Board, depth: number): number {
   const emptyCells = getEmptyCells(board)
-  if (emptyCells.length === 0 || depth === 0) return scoreBoard(board)
+  if (emptyCells.length === 0 || depth <= 0) return scoreBoard(board)
 
   let expectedValue = 0
 

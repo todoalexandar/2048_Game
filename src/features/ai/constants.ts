@@ -1,7 +1,3 @@
-import type { Direction } from '../game/types'
-
-export const DIRECTIONS: Direction[] = ['up', 'left', 'down', 'right']
-
 export const DEFAULT_SEARCH_DEPTH = 3
 
 export const NEW_TILE_OUTCOMES = [

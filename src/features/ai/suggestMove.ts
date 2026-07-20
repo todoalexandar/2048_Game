@@ -1,6 +1,7 @@
+import { ALL_DIRECTIONS } from '../game/logic'
 import { move } from '../game/logic/moves'
 import type { Board, Direction } from '../game/types'
-import { DEFAULT_SEARCH_DEPTH, DIRECTIONS } from './constants'
+import { DEFAULT_SEARCH_DEPTH } from './constants'
 import { evaluateBoard } from './expectimax'
 
 /**
@@ -11,7 +12,7 @@ export function suggestMove(board: Board, depth: number = DEFAULT_SEARCH_DEPTH):
   let bestDirection: Direction | null = null
   let bestScore = -Infinity
 
-  for (const direction of DIRECTIONS) {
+  for (const direction of ALL_DIRECTIONS) {
     const result = move(board, direction)
     if (!result.moved) continue
 

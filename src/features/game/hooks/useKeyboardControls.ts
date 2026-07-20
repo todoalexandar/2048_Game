@@ -4,10 +4,10 @@ import { moveRequested } from '../gameSlice'
 import type { Direction } from '../types'
 
 const KEY_TO_DIRECTION: Record<string, Direction> = {
-  ArrowLeft: 'left',
-  ArrowRight: 'right',
-  ArrowUp: 'up',
-  ArrowDown: 'down',
+  arrowleft: 'left',
+  arrowright: 'right',
+  arrowup: 'up',
+  arrowdown: 'down',
   a: 'left',
   d: 'right',
   w: 'up',
@@ -20,7 +20,7 @@ export function useKeyboardControls(): void {
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent): void {
-      const direction = KEY_TO_DIRECTION[event.key]
+      const direction = KEY_TO_DIRECTION[event.key.toLowerCase()]
       if (!direction) return
       event.preventDefault()
       dispatch(moveRequested(direction))

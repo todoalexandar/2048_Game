@@ -15,6 +15,17 @@ describe('evaluateBoard', () => {
     expect(evaluateBoard(board, 0)).toBe(scoreBoard(board))
   })
 
+  it('equals scoreBoard directly at negative depth', () => {
+    const board: Board = [
+      [2, 4, 8, 16],
+      [4, 8, 16, 32],
+      [8, 16, 32, 64],
+      [16, 32, 64, null],
+    ]
+
+    expect(evaluateBoard(board, -1)).toBe(scoreBoard(board))
+  })
+
   it('equals scoreBoard directly on a full board, even at depth > 0, since there is nowhere to spawn', () => {
     const board: Board = [
       [2, 4, 8, 16],
