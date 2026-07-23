@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { addRandomTile, createEmptyBoard, createInitialBoard, getEmptyCells } from '../board'
+import { BOARD_DIMENSIONS } from '../constants'
 
 describe('createEmptyBoard', () => {
-  it('creates a 4x4 board of nulls by default', () => {
+  it('creates a board of nulls matching BOARD_DIMENSIONS by default', () => {
     const board = createEmptyBoard()
 
-    expect(board).toHaveLength(4)
+    expect(board).toHaveLength(BOARD_DIMENSIONS.rows)
     board.forEach((row) => {
-      expect(row).toHaveLength(4)
+      expect(row).toHaveLength(BOARD_DIMENSIONS.cols)
       row.forEach((cell) => expect(cell).toBeNull())
     })
   })

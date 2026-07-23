@@ -1,14 +1,20 @@
 .tile {
+  container-type: inline-size;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
+  min-height: 0;
   aspect-ratio: 1;
   border-radius: 4px;
   background: #f4f1f6;
-  font-size: 1.75rem;
-  font-weight: 700;
   color: #4a4063;
   transition: background-color 0.15s ease;
+}
+
+.value {
+  font-size: clamp(8px, 42cqw, 1.75rem);
+  font-weight: 700;
 }
 
 .tile2 {
@@ -38,30 +44,42 @@
 .tile128 {
   background: #bdb2ff;
   color: #3d2e7c;
-  font-size: 1.5rem;
+}
+.tile128 .value {
+  font-size: clamp(7px, 34cqw, 1.5rem);
 }
 .tile256 {
   background: #ffc6ff;
   color: #7a1f6b;
-  font-size: 1.5rem;
+}
+.tile256 .value {
+  font-size: clamp(7px, 34cqw, 1.5rem);
 }
 .tile512 {
   background: #ff6b6b;
   color: #f9f6f2;
-  font-size: 1.5rem;
+}
+.tile512 .value {
+  font-size: clamp(7px, 34cqw, 1.5rem);
 }
 .tile1024 {
   background: #f72585;
   color: #f9f6f2;
-  font-size: 1.25rem;
+}
+.tile1024 .value {
+  font-size: clamp(6px, 28cqw, 1.25rem);
 }
 .tile2048 {
   background: #ffd60a;
   color: #4a3800;
-  font-size: 1.25rem;
+}
+.tile2048 .value {
+  font-size: clamp(6px, 28cqw, 1.25rem);
 }
 .tileMax {
   background: #1b1b3a;
   color: #ffd60a;
-  font-size: 1.25rem;
+}
+.tileMax .value {
+  font-size: clamp(6px, 28cqw, 1.25rem);
 }

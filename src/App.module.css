@@ -1,5 +1,7 @@
 .app {
-  width: min(90vw, 420px);
+  width: fit-content;
+  min-width: min(90vw, 420px);
+  max-width: 95vw;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -21,6 +23,8 @@
 
 .boardWrapper {
   position: relative;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .hint {

@@ -19,7 +19,7 @@ export function Tile({ value }: TileProps) {
 
   return (
     <div className={`${styles.tile} ${tileClassName(value)}`} data-testid="tile" data-value={value}>
-      {value}
+      <span className={styles.value}>{value}</span>
     </div>
   )
 }
